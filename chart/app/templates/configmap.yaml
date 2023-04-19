@@ -4,4 +4,4 @@ metadata:
   name: example-configmap
 data:
   SCRIPT_FILENAME: "/var/www/html/index.php"
-  HTTP_PROXY: ""
+  #HTTP_PROXY: ""
