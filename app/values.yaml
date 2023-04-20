@@ -73,6 +73,11 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+      backend:
+        service:
+          name: example-service
+          port:
+            name: fastcgi
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

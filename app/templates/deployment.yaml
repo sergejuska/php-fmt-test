@@ -34,20 +34,20 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: php
+            - name: fastcgi
               containerPort: 9000
           livenessProbe:
             failureThreshold: 3
             initialDelaySeconds: 5
             periodSeconds: 10
             tcpSocket:
-              port: php
+              port: fastcgi
           readinessProbe:
             failureThreshold: 3
             initialDelaySeconds: 5
             periodSeconds: 10
             tcpSocket:
-              port: php
+              port: fastcgi
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
