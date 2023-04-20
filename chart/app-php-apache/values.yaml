@@ -14,6 +14,24 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+persistence:
+  type: pvc
+  enabled: true
+  # storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  size: 1Gi
+  # annotations: {}
+  finalizers:
+    - kubernetes.io/pvc-protection
+  # selectorLabels: {}
+  ## Sub-directory of the PV to mount. Can be templated.
+  # subPath: ""
+  ## Name of an existing PVC. Can be templated.
+  # existingClaim:
+  ## Extra labels to apply to a PVC.
+  extraPvcLabels: {}
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
