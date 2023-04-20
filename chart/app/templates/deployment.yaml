@@ -33,9 +33,9 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: fastcgi
-              containerPort: 9000
+          # ports:
+          #   - name: fastcgi
+          #     containerPort: 9000
           livenessProbe:
             failureThreshold: 3
             initialDelaySeconds: 5
@@ -53,6 +53,16 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /var/www/html
+        - name: nginx
+          image: nginx
+          imagePullPolicy: Always
+          ports:
+            - name: nginx
+              containerPort: 80
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d
+              name: nginxconf
+              readOnly: true
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -73,3 +83,8 @@ spec:
         {{- else }}
           emptyDir: {}
         {{- end }}
+        - name: nginxconf
+          configMap:
+            defaultMode: 256
+            name: nginxthroughpass
+            optional: false

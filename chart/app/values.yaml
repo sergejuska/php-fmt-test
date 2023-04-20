@@ -60,7 +60,7 @@ securityContext:
 
 service:
   type: ClusterIP
-  port: 9000
+  port: 80
 
 ingress:
   enabled: false
@@ -75,9 +75,9 @@ ingress:
           pathType: Prefix
       backend:
         service:
-          name: example-service
+          name: php-app
           port:
-            name: fastcgi
+            name: nginx
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
