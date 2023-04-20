@@ -36,18 +36,18 @@ spec:
           # ports:
           #   - name: fastcgi
           #     containerPort: 9000
-          livenessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 5
-            periodSeconds: 10
-            tcpSocket:
-              port: fastcgi
-          readinessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 5
-            periodSeconds: 10
-            tcpSocket:
-              port: fastcgi
+          # livenessProbe:
+          #   failureThreshold: 3
+          #   initialDelaySeconds: 5
+          #   periodSeconds: 10
+          #   tcpSocket:
+          #     port: fastcgi
+          # readinessProbe:
+          #   failureThreshold: 3
+          #   initialDelaySeconds: 5
+          #   periodSeconds: 10
+          #   tcpSocket:
+          #     port: fastcgi
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
