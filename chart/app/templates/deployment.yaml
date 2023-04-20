@@ -63,6 +63,8 @@ spec:
             - mountPath: /etc/nginx/conf.d
               name: nginxconf
               readOnly: true
+            - name: data
+              mountPath: /var/www/html
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
