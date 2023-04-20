@@ -69,3 +69,4 @@ spec:
             claimName: {{ .Values.persistence.existingClaim | default (include "app.fullname" .) }}  
         {{- else }}
           emptyDir: {}
+        {{- end }}
